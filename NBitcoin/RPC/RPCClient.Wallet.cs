@@ -648,6 +648,20 @@ namespace NBitcoin.RPC
 			}
 		}
 
+		//listtransaction
+		public async Task<IEnumerable<Transaction>> ListWalletTransactions(string label,int count, int from)
+		{
+			var result = await SendCommandAsync(RPCOperations.listtransactions,label,count,from);
+			var array = (JArray)result.Result;
+			IEnumerable<Transaction> returnlist = new List<Transaction>();
+			foreach (var item in array.Children())
+			{
+
+			}
+
+			return returnlist;
+		}
+
 
 		// listunspent
 
